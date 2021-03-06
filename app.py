@@ -1,15 +1,18 @@
 ############################################
 # Import all dependencies
 ############################################
+import numpy as np
 import sqlalchemy
+import pandas as pd
+import datetime as dt
+
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-
-import numpy as np
-import datetime as dt
-
 from flask import Flask, jsonify
+from datetime import datetime, timedelta
+from flask import url_for
+
 
 ############################################
 #database
@@ -37,7 +40,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return (
-        f"<b>The available routes below:</b><br/>"
+        f"<u><b><h1>The available routes below:</h1></u></b><br/>"
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
@@ -122,6 +125,23 @@ def tobs():
         hawaii_temps.append(hawaii_tobs_dict)
     
     return jsonify(hawaii_temps)
+
+# start date data
+@app.route("/api/v1.0/start_date")
+def start_date():
+##################
+##working on it!##
+##################
+    session.close()
+
+
+# end date data
+@app.route("/api/v1.0/end_date")
+def end_date():
+##################
+##working on it!##
+##################
+    session.close()
 
 
 if __name__ == '__main__':
